@@ -33,7 +33,7 @@ for archivo in archivos_csv:
     # Lee el archivo CSV usando pandas
     try:
         df = pd.read_csv(ruta_archivo)
-        df = df[df.apply(lambda row: len(row.dropna()) == 13, axis=1)]      
+        df = df[df.apply(lambda row: len(row.dropna()) == 12, axis=1)]      
         # Obtiene las dimensiones del DataFrame
         dimension = df.shape
         filas, columnas = dimension       
@@ -68,7 +68,7 @@ for archivo in archivos_csv:
         svm_accuracies.append(svm_accuracy) 
         print(f'SVM Accuracy: {svm_accuracy}')
         # KNN
-        knn_model = KNeighborsClassifier()
+        knn_model = KNeighborsClassifier(n_neighbors=5)
         knn_model.fit(X_train, y_train)
         knn_predictions = knn_model.predict(X_test)
         knn_accuracy = accuracy_score(y_test, knn_predictions)

@@ -53,7 +53,7 @@ for archivo in archivos_csv:
         svm_accuracies.append(svm_accuracy) 
         print(f'SVM Accuracy: {svm_accuracy}')
         # KNN
-        knn_model = KNeighborsClassifier()
+        knn_model = KNeighborsClassifier(n_neighbors=3)
         knn_model.fit(X_train, y_train)
         knn_predictions = knn_model.predict(X_test)
         knn_accuracy = accuracy_score(y_test, knn_predictions)
